@@ -1,4 +1,64 @@
-<h1>Welcome to bemila</h1>
+<h1>Welcome to bemila(Parent Component)</h1>
 <p>Good evening everyone. Have a nice day</p>
 <p>Hai everyone</p>
-<app-child1></app-child1>
+<div>
+  <label for="parent">Enter Parent Name: </label>
+  <input type="text" [(ngModel)]="parent">
+</div>
+
+<div>
+  <label for="parenrHobby">Enter Parent Hobby: </label>
+  <input type="text" [(ngModel)]="hobby">
+</div>
+
+<p>Child name is : {{ receiveChild}}</p>
+
+<hr>
+
+<nav>
+  <ul>
+    <li><a (click)="showChild1Component()">Child1 Component</a></li>
+    <li><a (click)="showChild2Component()">Child2 Component</a></li>
+  </ul>
+</nav>
+
+<hr>
+<h1>Create module named power with routing two components named power1 and power2</h1>
+
+<nav>
+  <ul>
+    <li><a routerLink="/power1" routerLinkActive="active">Power1 Component</a></li>
+    <li><a routerLink="/power2" routerLinkActive="active">Power2 Component</a></li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+
+<hr>
+
+<p *appStructure="condition" class="structure a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appStructure="!condition" class="structure b">
+  (B) Although the condition is true,
+  this paragraph is displayed because appUnless is set to false.
+</p>
+
+<button (click)="condition = !condition" [ngClass]="{ 'a': condition, 'b': !condition }">
+  Toggle button
+</button>
+
+<hr>
+
+<div *ngIf="heroes">{{heroes.name}}</div>
+
+<hr>
+<div *ngFor="let fruit of fruits">{{fruit}}</div>
+
+
+<hr>
+<p appColor>Highlight me!</p>
+
+<!-- Temporarily Child1 hide for check router is working or not -->
+<!--<app-child1 [parentName]="parent" (childName)="onChangeChild($event)"></app-child1> -->
