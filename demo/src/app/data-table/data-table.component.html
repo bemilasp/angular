@@ -1,0 +1,26 @@
+<div class="container-lg">
+  
+
+    <div class="row">
+        <div class="col">
+              <table onload="getData()" class="table table-bordered border-dark">
+                <thead>
+                  <tr>
+                    <th>UserId</th>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Completed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let singleData of data">
+                    <td>{{singleData.userId}}</td>
+                    <td>{{singleData.id}}</td>
+                    <td>{{singleData.title}}</td>
+                    <td>{{singleData.completed}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

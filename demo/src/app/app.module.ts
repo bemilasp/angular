@@ -1,5 +1,4 @@
 import { NgModule, TemplateRef } from '@angular/core';
-
 import { FormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,6 +13,10 @@ import { ColorDirective } from './color.directive';
 import { Power1Component } from './power1/power1.component';
 import { Power2Component } from './power2/power2.component';
 import { PowerRoutingModule } from './power/power-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from './data-table/table.module';
+
+
 
 
 @NgModule({
@@ -25,14 +28,17 @@ import { PowerRoutingModule } from './power/power-routing.module';
     ColorDirective,
     Power1Component,
     Power2Component
+  
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    PowerRoutingModule
-
+    PowerRoutingModule,
+    HttpClientModule,
+    TableModule
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
