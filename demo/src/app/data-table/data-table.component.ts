@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+interface datas {
+  userId: number;
+  id: number;
+  title: string;
+  completed: string;
+}
 
 
 @Component({
@@ -8,9 +14,12 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent implements OnInit {
+
+
+export class DataTableComponent implements OnInit{
 
   data: any = [];
+
   constructor(private http: HttpClient) { 
   }
 

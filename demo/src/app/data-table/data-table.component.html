@@ -1,9 +1,7 @@
 <div class="container-lg">
-  
-
     <div class="row">
         <div class="col">
-              <table onload="getData()" class="table table-bordered border-dark">
+              <table  class="table table-bordered border-dark">
                 <thead>
                   <tr>
                     <th>UserId</th>
@@ -14,10 +12,10 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let singleData of data">
-                    <td>{{singleData.userId}}</td>
-                    <td>{{singleData.id}}</td>
-                    <td>{{singleData.title}}</td>
-                    <td>{{singleData.completed}}</td>
+                    <td *ngIf="singleData.id  !== 3">{{singleData.userId}}</td>
+                    <td *ngIf="singleData.id  !== 3">{{singleData.id}}</td>
+                    <td *ngIf="singleData.id  !== 3">{{singleData.title}}</td>
+                    <td *ngIf="singleData.id  !== 3">{{singleData.completed}}</td>
                   </tr>
                 </tbody>
               </table>

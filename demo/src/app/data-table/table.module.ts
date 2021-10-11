@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'data-table', component: DataTableComponent}
+  { path: '', component: DataTableComponent}
 ]
 
 
