@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DataTableComponent } from '../data-table/data-table.component';
 import { HttpClientModule} from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -15,6 +16,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
+   
     RouterModule.forChild(routes)
      
   ]

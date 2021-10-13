@@ -10,11 +10,12 @@ import { Child1Component } from './child1/child1.component';
 import { Child2Component } from './child2/child2.component';
 import { StructureDirective } from './structure.directive';
 import { ColorDirective } from './color.directive';
-import { Power1Component } from './power1/power1.component';
-import { Power2Component } from './power2/power2.component';
+
 import { PowerRoutingModule } from './power/power-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from './data-table/table.module';
+import { CustomPipe } from '../app/data-table/custom.pipe';
+import { PowerModule } from './power/power.module';
 
 
 
@@ -26,8 +27,7 @@ import { TableModule } from './data-table/table.module';
     Child2Component,
     StructureDirective,
     ColorDirective,
-    Power1Component,
-    Power2Component
+    CustomPipe
   
   ],
   imports: [
@@ -36,7 +36,10 @@ import { TableModule } from './data-table/table.module';
     AppRoutingModule,
     PowerRoutingModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    PowerModule,
+    
+  
   ],
   
   providers: [],

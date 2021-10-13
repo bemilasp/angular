@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgIterable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularService } from './angular.service';
+import { NgForm, NgModel } from '@angular/forms'
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,23 @@ import { AngularService } from './angular.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  city = [
+    {cityName: "kovai"},
+    {cityName: "chennai"},
+    {cityName: "salem"},
+    {cityName: "puthur"},
+
+  ];
+
+  submitForm(formData: NgForm) {
+    console.log(formData)
+  }
+
+
+
+select: string = "--- Select your city ---";
+
   title = 'demo';
   parent: string="";
   receiveChild: string="";
@@ -21,6 +40,13 @@ export class AppComponent {
 
   }
 
+  birthday = new Date(1988, 3, 15); 
+   currency: number = 34; 
+  decimal: number =  3.14159265359;
+  percent: number = 23;
+  text: string = "gOod moRning"
+  object: Object = {foo: 'bar', baz: 'qux', nested: {xyz: 3, numbers: [1, 2, 3, 4, 5]}};
+  arr: string[] = ["mango","grape","apple","banana"];
 
 
   fruits: string[] = ["apple","mango","grape"];
@@ -48,7 +74,6 @@ export class AppComponent {
   }
 
 
-
-
   
+
 }

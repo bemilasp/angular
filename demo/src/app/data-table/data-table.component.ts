@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-interface datas {
-  userId: number;
-  id: number;
-  title: string;
-  completed: string;
-}
-
 
 @Component({
   selector: 'app-data-table',
@@ -17,8 +10,10 @@ interface datas {
 
 
 export class DataTableComponent implements OnInit{
-
+ fruits: string[] = ["apple","mango","grape"];
   data: any = [];
+
+
 
   constructor(private http: HttpClient) { 
   }

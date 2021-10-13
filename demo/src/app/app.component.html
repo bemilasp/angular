@@ -31,10 +31,49 @@
     <li><a routerLink="/power2" routerLinkActive="active">Power2 Component</a></li>
   </ul>
 </nav>  
--->  
+-->
 
 
-<router-outlet></router-outlet>
+<!--  <h1 class="text-center">Built-in pipes</h1>
+
+<h4>Pipes - Date</h4>
+<p>The hero's birthday is {{ birthday | date }} </p>
+<p>The hero's birthday is {{ birthday | date:"dd/MM/yy" }} </p>
+
+<h4>Pipes- Uppercase</h4>
+<p> {{ text | uppercase }} </p>
+
+<h4>Pipes- Lowercase</h4>
+<p> {{ text | lowercase }} </p>
+
+<h4>Pipes- Currency</h4>
+  <p> {{ currency | currency }} </p>
+  <p> {{ currency | currency: 'INR': 'symbol' }} </p>
+
+  <h4>Pipes- Decimal</h4>
+  <p> {{ decimal | number}} </p>
+  <p> {{ decimal | number: "2.4" }} </p>
+
+  <h4>Pipes- Percent</h4>
+  <p> {{ percent | percent}} </p>
+  <p> {{ percent | percent: "5.3"}} </p>
+
+  <h4>Pipes- Titlecase</h4>
+  <p> {{ text | titlecase }} </p>
+
+
+  
+  <h4>Pipes- Json</h4>
+  <p> {{ object | json }} </p>
+
+  <h4>Pipes- Slice</h4>
+  <p> {{ arr | slice:2 }} </p>
+
+  <h4>Pipes- Keyvalue</h4>
+  <p> {{ object | keyvalue | json }} </p>
+
+<router-outlet></router-outlet> -->
+
 
 
 <!--  <p *appStructure="condition" class="structure a">
@@ -61,6 +100,122 @@
 <hr>
 <p appColor>Highlight me!</p>
 
-Temporarily Child1 hide for check router is working or not
+Temporarily Child1 hide for check router is working or not 
 <app-child1 [parentName]="parent" (childName)="onChangeChild($event)"></app-child1> -->
+
+<div class="container-lg">
+  <h3 class="text-center mb-5">Angular Template driven forms</h3>
+  <form (ngSubmit)="submitForm(userForm)" #userForm="ngForm" >
+
+    <div class="row gy-4">
+      <div class="col-md-6 form-group">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email"  ngModel required #email="ngModel" email placeholder="Enter your email address">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+         
+          <div *ngIf="email.errors?.required">
+           <small>Email is required</small> 
+          </div>
+          <div *ngIf="email.invalid && email.value" >
+          <small> Please enter valid email</small>
+          </div>
+          </div>
+       
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" ngModel name="password" required minlength="6"
+          #password="ngModel" placeholder="Enter your password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+          <div *ngIf="password.errors?.required">
+           <small>Password is required</small> 
+          </div>
+          <div *ngIf="password.errors?.minlength">
+            <small>Passowrd must be at least 6 characters long.</small>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input type="text" class="form-control" ngModel id="name" name="name" aria-describedby="emailHelp" #name="ngModel" required placeholder="Enter your name">
+        <div *ngIf="name.errors?.required && (name.touched || name.dirty)" class="text-danger">
+          <small>Name is required</small> 
+         </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label for="exampleInputage1" class="form-label">Age</label>
+        <input type="number" class="form-control" ngModel id="age" name="age" #age="ngModel" placeholder="Enter your age" required>
+        <div *ngIf="age.errors?.required && (age.touched || age.dirty)" class="text-danger">
+          <small>Age is required</small> 
+         </div>
+      </div>
+
+      <div class="col-md-6 form-group">
+        <label for="city">Select your city</label>
+        <select id="city" name="city" class="form-control" ngModel  required >
+          <option value="" >{{select}}</option>
+          <option *ngFor="let singleCity of city" value="singleCity.cityName">{{ singleCity.cityName}}</option>
+        </select>
+
+       
+      </div>
+
+      <div class="col-md-3 ">
+        <label for="gender">Gender</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Male
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2">
+          <label class="form-check-label" for="flexRadioDefault2">
+            Female
+          </label>
+        </div>
+       
+      </div>
+
+      <div class="col-md-3">
+        <label for="gender">Select your language</label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="tamil">
+          <label class="form-check-label" for="flexCheckDisabled">
+            Tamil
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="english">
+          <label class="form-check-label" for="flexCheckCheckedDisabled">
+          English
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6 form-group">
+        <button type="submit" class="btn btn-secondary">Submit Template Form </button>
+      </div>
+    </div>
+
+
+    
+    <div class="row mt-4">
+      <div class="col-md-6 ">
+        <button routerLink="/reactive-form"  class="btn btn-primary">Show Reactive Form</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
+
+
 
