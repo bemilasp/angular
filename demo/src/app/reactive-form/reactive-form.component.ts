@@ -19,6 +19,8 @@ export class ReactiveFormComponent implements OnInit {
 
   ];
 
+  submitted:boolean = false;
+  
  
   userForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
@@ -37,15 +39,18 @@ export class ReactiveFormComponent implements OnInit {
   });
   
   onSubmit() {
-   if(this.userForm.valid) {
-    console.log("submitted");
-    this.userForm.reset;
+    this.submitted = true;
+    if(this.userForm.valid)
+    console.log("submitted successfully");
+    this.userForm.reset();
    }
+
+  
    
  
   
  
-  }
+  
 
   constructor( )
      { 
