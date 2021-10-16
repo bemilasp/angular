@@ -3,77 +3,158 @@
     <h3 class="text-center">Angular Reactive Form</h3>
     <form [formGroup] = "userForm" (ngSubmit)="onSubmit()" novalidate>
         <div class="row g-4 mt-4">
-            <div class="col-md-6 form-group">
-                <label for="firstname" class="form-label fw-bolder">First Name</label>
-                <input type="text" class="form-control" id="firstName" formControlName="firstName" name="firstName" placeholder="Enter your First Name" autocomplete="off" >
-                <span class="text-danger" *ngIf="userForm.get('firstName').invalid && userForm.get('firstName').touched "><small>First name is mandatory</small></span>
-            </div>
+            <div class="col-md-6 form-group"  >
+                <label for="firstname" class="form-label fw-bolder" >First Name</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" name="firstName" 
+                placeholder="Enter your First Name" autocomplete="off" 
+                [ngClass]="(userForm.get('firstName').touched || userForm.get('firstName').dirty)  &&  
+                userForm.get('firstName').hasError('required')? 'is-invalid': '' || 
+                ((userForm.get('firstName').touched || 
+                userForm.get('firstName').dirty) && 
+                !userForm.get('firstName').invalid)
+                ? 'is-valid': '' " 
+                >
+                <span class="invalid-feedback" >
+                    First name is mandatory</span>
+                </div>
+        
+            
             <div class="col-md-6 form-group">
                     <label for="email" class="form-label fw-bolder">Email </label>
-                    <input type="email" class="form-control" formControlName="email" id="email" name="email" placeholder="Enter your email" autocomplete="off" >
-                    <span class="text-danger" *ngIf=" userForm.get('email').touched && !userForm.get('email').value"><small>Email is mandatory</small></span>
-                    <span class="text-danger" *ngIf=" userForm.get('email').invalid && userForm.get('email').value"><small>This is invalid email</small></span>
+                    <input type="email" class="form-control" formControlName="email" id="email"  [ngClass]="(userForm.get('email').touched || userForm.get('email').dirty) &&
+                    userForm.get('email').hasError('required')? 'is-invalid': '' || 
+                    userForm.get('email').hasError('email')? 'is-invalid': '' || 
+                    ((userForm.get('email').touched || 
+                    userForm.get('email').dirty) && 
+                    !userForm.get('email').invalid)
+                    ? 'is-valid': '' " 
+                     name="email" placeholder="Enter your email" autocomplete="off" >
+                    <span class="text-danger" *ngIf="(userForm.get('email').touched || userForm.get('email').dirty) && !userForm.get('email').value">Email is mandatory</span>
+                    <span class="text-danger" *ngIf="userForm.get('email').invalid && userForm.get('email').value">This is invalid email</span>
             </div>
     
             <div class="col-md-6 form-group">
                 <label for="lastname" class="form-label fw-bolder">Last Name</label>
-                <input type="text" class="form-control" id="lastName" formControlName="lastName" name="lastName" placeholder="Enter your Last Name" autocomplete="off" >
-                <span class="text-danger" *ngIf="userForm.get('lastName').invalid && userForm.get('lastName').touched"><small>Last name is mandatory</small></span>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName"  [ngClass]="(userForm.get('lastName').touched || userForm.get('lastName').dirty)  && 
+                userForm.get('lastName').hasError('required')? 'is-invalid': '' || 
+                ((userForm.get('lastName').touched || 
+                userForm.get('lastName').dirty) && 
+                !userForm.get('lastName').invalid)
+                ? 'is-valid': '' " 
+
+                name="lastName" placeholder="Enter your Last Name" autocomplete="off" >
+                <span class="invalid-feedback">Last name is mandatory</span>
             </div>
             <div class="col-md-6 form-group">
                 <label for="street" class="form-label fw-bolder">Street</label>
-                <input type="text" class="form-control" id="street" formControlName="street" name="street" placeholder="Enter your Street" autocomplete="off" >
-                <span class="text-danger" *ngIf="userForm.get('street').invalid && userForm.get('street').touched"><small>Street is mandatory</small></span>
+                <input type="text" class="form-control" id="street"  [ngClass]="(userForm.get('street').touched || userForm.get('street').dirty)  && 
+                userForm.get('street').hasError('required')? 'is-invalid': '' || 
+                ((userForm.get('street').touched || 
+                userForm.get('street').dirty) && 
+                !userForm.get('street').invalid)
+                ? 'is-valid': '' " 
+                  formControlName="street" name="street" placeholder="Enter your Street" autocomplete="off" >
+                <span class="invalid-feedback">Street is mandatory</span>
             </div>
     
             <div class="col-md-6 form-group">
                 <label for="city" class="form-label fw-bolder">Select your city</label>
-               <select name="city" id="city" class="form-select" aria-label="Default select example" formControlName="city">
+               <select name="city" id="city" class="form-select" aria-label="Default select example" formControlName="city"  [ngClass]="(userForm.get('city').touched || userForm.get('city').dirty)  && 
+               userForm.get('city').hasError('required')? 'is-invalid': '' || 
+               ((userForm.get('city').touched || 
+               userForm.get('city').dirty) && 
+               !userForm.get('city').invalid)
+               ? 'is-valid': '' " 
+               >
                    <option value="" disabled>--- Select your city ---</option>
                    <option *ngFor = "let singleCity of cityNames">{{ singleCity.cityName }}</option>
                </select>
-               <span class="text-danger" *ngIf="!userForm.get('city').valid && userForm.get('city').touched "><small>Please select your city</small></span>
+               <span class="invalid-feedback">Please select your city</span>
             </div>
     
             <div class="col-md-6 form-group">
                 <label for="password" class="form-label fw-bolder">Password</label>
-                <input type="password" formControlName="password" class="form-control" id="password" name="password" placeholder="Enter your Password" autocomplete="off" >
-                <span class="text-danger" *ngIf="!userForm.get('password').value && userForm.get('password').touched"><small>Password is mandatory</small></span>
-                <span class="text-danger" *ngIf="userForm.get('password').errors.minlength && userForm.get('password').value"><small>Password must be atleast 5 characters</small></span>
-                <span class="text-danger" *ngIf="userForm.get('password').errors.maxlength && userForm.get('password').value"><small>Password must not exceed 7 characters</small></span>
+                <input type="password" formControlName="password" 
+                [ngClass]="(userForm.get('password').touched || userForm.get('password').dirty) && 
+                userForm.get('password').hasError('required')? 'is-invalid': '' || 
+                userForm.get('password').hasError('minlength')? 'is-invalid': '' ||
+                userForm.get('password').hasError('maxlength')? 'is-invalid': '' ||
+                ((userForm.get('password').touched || 
+                userForm.get('password').dirty) && 
+                !userForm.get('password').invalid)
+                ? 'is-valid': '' "  class="form-control" id="password" name="password" placeholder="Enter your Password" autocomplete="off"  >
+                
+                <span class="invalid-feedback">
+                    {{
+                        userForm.get("password").hasError("required")
+                        ? "Password is required" : ""
+                    }}
+
+                    {{
+                        userForm.get("password").hasError("minlength")
+                        ? "Password must be atleast 5 characters" : ""
+                    }}
+
+                    {{
+                        userForm.get("password").hasError("maxlength")
+                        ? "Password must not exceed 7 characters" : ""
+                    }}
+                </span>
+                
             </div>
     
             <div class="col-md-6 form-group">
                 <label for="repassword" class="form-label fw-bolder">Retype Password</label>
-                <input type="password" formControlName="repassword" class="form-control" id="repassword" name="repassword" placeholder="Enter your password again" autocomplete="off" >
-                <span class="text-danger" *ngIf="userForm.get('repassword').invalid && userForm.get('repassword').touched"><small>Please enter your password again</small></span>
-                <span class="text-danger" *ngIf="userForm.get('password').value !== userForm.get('repassword').value && userForm.get('repassword').value"><small>Password does not match</small></span>
+                <input type="password" formControlName="repassword"  [ngClass]="(userForm.get('repassword').touched ||
+                 userForm.get('repassword').dirty) &&
+                userForm.get('repassword').hasError('required')? 'is-invalid': '' &&
+                userForm.get('repassword').value !==  userForm.get('password').value ? 'is-invalid': '' || 
+               
+                ((userForm.get('repassword').touched || 
+                userForm.get('repassword').dirty) && 
+                !userForm.get('repassword').invalid)
+                ? 'is-valid': '' "  class="form-control" id="repassword" name="repassword" placeholder="Enter your password again" autocomplete="off" >
+                <span class="invalid-feedback">
+                    {{
+                        userForm.get("repassword").hasError("required")
+                        ? "Repassword is required" : ""
+                    }}
+                </span>
+                <span class="text-danger" *ngIf="userForm.get('repassword').value !== userForm.get('password').value &&
+                 userForm.get('repassword').touched &&  userForm.get('repassword').value">
+                  Password and repassword does not match
+                </span>
+               
             </div>
     
             <div class="col-md-6 form-group">
                 <label for="pincode" class="form-label fw-bolder">Pincode</label>
-                <input type="number" formControlName="pincode" class="form-control" id="pincode" name="pincode" placeholder="Enter your pincode" autocomplete="off">
-                <span class="text-danger" *ngIf="userForm.get('pincode').invalid && userForm.get('pincode').touched"><small>Pincode is mandatory</small></span>
+                <input type="number" formControlName="pincode" class="form-control"   [ngClass]="(userForm.get('pincode').touched || userForm.get('pincode').dirty)  && 
+                userForm.get('pincode').hasError('required')? 'is-invalid': '' || 
+                ((userForm.get('pincode').touched || 
+                userForm.get('pincode').dirty) && 
+                !userForm.get('pincode').invalid)
+                ? 'is-valid': '' " 
+                id="pincode" name="pincode" placeholder="Enter your pincode" autocomplete="off">
+                <span class="invalid-feedback">Pincode is mandatory</span>
             </div>
     
             <div class="col-md-6 form-group form-check" >
                 <label for="language" class="form-label fw-bolder">Known Languages</label>
                 <div>
-                    <input type="checkbox" value="tamil" name="language" formControlName="language">
+                    <input type="checkbox" value="tamil" name="language" formControlName="language" >
                     <label for="tamil">Tamil</label>
                 </div>
                 <div>
-                    <input type="checkbox" value="english" name="language" formControlName="language" >
+                    <input type="checkbox" value="english" name="language" formControlName="language">
                     <label for="english">English</label>
                 </div>
                 <div>
                     <input type="checkbox" value="hindi" name="language" formControlName="language">
                     <label for="hindi">Hindi</label>
                 </div>
-                <!-- <div *ngIf="submitted && userForm.get('language').touched" class="text-danger">
-                   <small>Language is mandatory</small> 
-                </div> -->
-               
+              
+               <div class="text-danger" *ngIf=" userForm.get('language').touched && !userForm.get('language').value">Landguage is mandatory</div>
       
                 </div>
                
@@ -89,9 +170,7 @@
                     <input type="radio" value="female" name="gender" formControlName="gender">
                     <label for="female">Female</label>
                 </div>
-              <!-- <div *ngIf=" userForm.get('gender').touched" class="text-danger">
-                   <small>Gender is mandatory</small> 
-                </div> --> 
+             
       
                
                
