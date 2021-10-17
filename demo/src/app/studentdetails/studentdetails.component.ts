@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  selector: 'app-child2',
-  templateUrl: './child2.component.html',
-  styleUrls: ['./child2.component.css']
+  selector: 'app-studentdetails',
+  templateUrl: './studentdetails.component.html',
+  styleUrls: ['./studentdetails.component.css']
 })
-export class Child2Component implements OnInit {
+export class StudentdetailsComponent implements OnInit {
 
  id: number;
 

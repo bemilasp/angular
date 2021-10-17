@@ -15,8 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from './data-table/table.module';
 import { CustomPipe } from '../app/data-table/custom.pipe';
 import { PowerModule } from './power/power.module';
-import { ChildrenModule } from './children/children.module';
-import { Child1Component } from './child1/child1.component';
+import { StudentsModule } from './students/students.module';
+import { StudentComponent } from './student/student.component';
 
 
 
@@ -28,7 +28,7 @@ import { Child1Component } from './child1/child1.component';
     
     StructureDirective,
     ColorDirective,
-   Child1Component,
+  StudentComponent,
     CustomPipe
   
   ],
@@ -40,7 +40,7 @@ import { Child1Component } from './child1/child1.component';
     HttpClientModule,
     TableModule,
     PowerModule,
-    ChildrenModule
+    StudentsModule
     
   
   ],
