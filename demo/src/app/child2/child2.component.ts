@@ -1,6 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularService } from '../angular.service';
+
+
 
 @Component({
   selector: 'app-child2',
@@ -9,18 +11,21 @@ import { AngularService } from '../angular.service';
 })
 export class Child2Component implements OnInit {
 
-  receivedHobby: string="";
-
-  receivedName: string="";
+ id: number;
 
 
-  constructor(private obj: AngularService) {}
+ 
+  constructor(private route: ActivatedRoute) {
+    
+  }
+
+ 
+
+
 
   ngOnInit(): void {
-
-    this.receivedHobby = this.obj.getParentName();
-    this.receivedName = this.obj.getParentHobby();
-   
+    this.id = this.route.snapshot.params.id;
+  
   }
 
 }

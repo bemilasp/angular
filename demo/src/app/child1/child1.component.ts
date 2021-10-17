@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit,Output,EventEmitter} from '@angular/core';
 
 
@@ -9,35 +10,25 @@ import { Component, Input, OnInit,Output,EventEmitter} from '@angular/core';
 })
 export class Child1Component implements OnInit {
 
-  @Input() parentName: string="";
+
+
+  data: any = [];
+
+  constructor(private http: HttpClient) { 
+  }
+
 
  
-  @Output() childName: EventEmitter<string> = new EventEmitter<string>();
-
-
-  name: string = "Everything is possible";
-
-  one: string="bemila"; 
-
-  changeNameValue: string="";
-
-  two: string="kovai";
-
-  changeCityValue: string="";
-
-  childValue: string="inisha";
-
   ngOnInit(): void {
+    const url = 'https://jsonplaceholder.typicode.com/todos'
+    this.http.get(url).subscribe((res) => {
+      this.data = res
+      console.log(this.data)
+    })
+   
   }
 
-  changeInput(event: string): void {
-    this.changeNameValue = event;
-  }
-
-  changeChild(event: string): void {
-    this.childName.emit(event);
-  }
-
+ 
 
 
 

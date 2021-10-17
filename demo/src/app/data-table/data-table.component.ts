@@ -11,9 +11,8 @@ import { HttpClient } from '@angular/common/http';
 
 export class DataTableComponent implements OnInit{
  fruits: string[] = ["apple","mango","grape"];
-  data: any = [];
-
-
+  
+data: any = [];
 
   constructor(private http: HttpClient) { 
   }

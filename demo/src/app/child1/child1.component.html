@@ -1,38 +1,10 @@
-<h1>Welocome India(Child component)</h1>
-<p>God is love</p>
-{{name}}
+<p>This is child1 component<p>
+
+    <div *ngFor="let singleData of data">
+        <a [routerLink]="['/child2/', singleData.id]">Show Child2</a>
+    </div>
 
 
-<h2>One way binding</h2>
-
-<div>
- <label for="name">Enter name : </label>
-<input type="text" [ngModel]="one" (ngModelChange)="changeInput($event)">
-<p>Show the entered name : {{ changeNameValue}} </p>
-</div>
-
-
-
-
-<h2>Two way binding</h2>
-
-<div>
-    <label for="name">Enter City name: </label>
-   <input type="text" [(ngModel)]="two">
-   <p>Show the entered city : {{ two }} </p>
- </div>
-
- <p>Parent name is : {{ parentName }} </p>
-
-
-   
-<div>
-    <label for="name">Enter child name : </label>
-   <input type="text" [ngModel]="childValue" (ngModelChange)="changeChild($event)">
-  
-   </div>
-
- 
 
 
 

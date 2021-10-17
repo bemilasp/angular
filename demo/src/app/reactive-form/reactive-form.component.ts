@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class ReactiveFormComponent implements OnInit {
 
   submitted:boolean = false;
 
+  name: string;
 
   
  
@@ -52,7 +53,8 @@ export class ReactiveFormComponent implements OnInit {
     }
    
    }
-   
+
+  
   constructor( )
      { 
    

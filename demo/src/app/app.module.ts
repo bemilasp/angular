@@ -6,8 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routingmodule';
-import { Child1Component } from './child1/child1.component';
-import { Child2Component } from './child2/child2.component';
+
 import { StructureDirective } from './structure.directive';
 import { ColorDirective } from './color.directive';
 
@@ -16,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from './data-table/table.module';
 import { CustomPipe } from '../app/data-table/custom.pipe';
 import { PowerModule } from './power/power.module';
+import { ChildrenModule } from './children/children.module';
+import { Child1Component } from './child1/child1.component';
+
 
 
 
@@ -23,10 +25,10 @@ import { PowerModule } from './power/power.module';
 @NgModule({
   declarations: [
     AppComponent,
-    Child1Component,
-    Child2Component,
+    
     StructureDirective,
     ColorDirective,
+   Child1Component,
     CustomPipe
   
   ],
@@ -38,6 +40,7 @@ import { PowerModule } from './power/power.module';
     HttpClientModule,
     TableModule,
     PowerModule,
+    ChildrenModule
     
   
   ],
