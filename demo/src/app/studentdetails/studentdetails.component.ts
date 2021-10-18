@@ -1,8 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-
+import { ActivatedRoute} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-studentdetails',
@@ -11,21 +10,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StudentdetailsComponent implements OnInit {
 
- id: number;
+  data: any = {};
 
 
- 
-  constructor(private route: ActivatedRoute) {
-    
+  constructor(private route: ActivatedRoute, private http: HttpClient  ) { 
   }
 
- 
-
-
-
   ngOnInit(): void {
-    this.id = this.route.snapshot.params.id;
-  
+
+ const id = this.route.snapshot.paramMap.get('id');
+   
+ const url = `https://jsonplaceholder.typicode.com/posts/${id}`;
+
+ this.http.get(url).subscribe((res) => {
+   this.data = res
+   console.log(this.data)
+ }) 
+    
   }
 
 }

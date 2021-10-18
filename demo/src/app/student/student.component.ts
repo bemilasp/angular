@@ -10,8 +10,6 @@ import { Component, Input, OnInit,Output,EventEmitter} from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-
-
   data: any = [];
 
   constructor(private http: HttpClient) { 
@@ -20,7 +18,7 @@ export class StudentComponent implements OnInit {
 
  
   ngOnInit(): void {
-    const url = 'https://jsonplaceholder.typicode.com/todos'
+    const url = `https://jsonplaceholder.typicode.com/todos`
     this.http.get(url).subscribe((res) => {
       this.data = res
       console.log(this.data)
