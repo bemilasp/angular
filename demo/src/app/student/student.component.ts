@@ -16,7 +16,7 @@ export class StudentComponent implements OnInit {
   }
 
 
- 
+
   ngOnInit(): void {
     const url = `https://jsonplaceholder.typicode.com/todos`
     this.http.get(url).subscribe((res) => {

@@ -4,12 +4,10 @@
  
 
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item  active" aria-current="page"> Show Student</li>
-    <li class="breadcrumb-item "> <a class="text-decoration-none" [routerLink] = "['/studentdetails',3]">Show Studentdetails</a></li>
-  </ol>
-</nav>
+   
+   <!-- <a class="text-decoration-none" [routerLink] = "['/studentdetails',3]">Show Studentdetails</a>
+   -->
+
 
     <div class="container-lg">
       <div class="row">
@@ -20,7 +18,7 @@
                       <th>UserId</th>
                       <th>Id</th>
                       <th>Title</th>
-                      <th>Completed</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -30,7 +28,7 @@
                         <td>{{ singleData.userId }}</td>
                         <td>{{ singleData.id }}</td>
                         <td>{{ singleData.title }}</td>
-                        <td>{{ singleData.completed }}</td>
+                        <td><button class="btn btn-primary" [routerLink] = "['/studentdetails',singleData.id]">View</button></td>
                      
                       </tr>
                 </tbody>

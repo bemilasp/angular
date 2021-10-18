@@ -7,7 +7,6 @@ import { StudentdetailsComponent } from '../studentdetails/studentdetails.compon
 
 const routes: Routes = [
 
-  { path: '', pathMatch: 'full', redirectTo: 'student'},
   { path: 'student', component: StudentComponent},
   { path: 'studentdetails/:id', component: StudentdetailsComponent}
 ];
